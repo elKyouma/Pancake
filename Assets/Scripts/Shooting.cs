@@ -30,6 +30,7 @@ public class Shooting : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        UpdateBulletSpawnPosition();
         if (Vector2.Distance(transform.position, Player.transform.position) < visionRange)
         {
             yield return new WaitForSeconds(fireRate);
@@ -43,5 +44,10 @@ public class Shooting : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             StartCoroutine(Shoot());
         }
+    }
+
+    void UpdateBulletSpawnPosition()
+    {
+        BulletSpawn.transform.position = transform.position + (Player.transform.position - transform.position).normalized;
     }
 }

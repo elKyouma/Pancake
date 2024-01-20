@@ -61,9 +61,12 @@ public class WeaponFollow : MonoBehaviour
 
     private IEnumerator Vibrate()
     {
-        Gamepad.current.SetMotorSpeeds(0.2f,0.2f);
-        yield return new WaitForSeconds(0.3f);
-        Gamepad.current.SetMotorSpeeds(0f, 0f);
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0.2f, 0.2f);
+            yield return new WaitForSeconds(0.3f);
+            Gamepad.current.SetMotorSpeeds(0f, 0f);
+        }
     }
 
     private void Update()

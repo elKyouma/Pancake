@@ -207,7 +207,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.45
 --- !u!50 &103065689028525418
 Rigidbody2D:
   serializedVersion: 4
@@ -299,7 +299,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.6
-  pickNextWaypointDist: 0.2
+  pickNextWaypointDist: 0.7
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
@@ -331,9 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273444ace85e5124aa9391989d7e43f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   Bullet: {fileID: 0}
-  BulletSpawn: {fileID: 0}
   fireRate: 0.5
   bulletSpeed: 10
   visionRange: 10

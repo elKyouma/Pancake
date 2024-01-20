@@ -17,11 +17,13 @@ public class Shooting : MonoBehaviour
     [SerializeField]
     private float bulletSpeed = 10f;
     [SerializeField]
-    private float bulletLifeTime = 2f;
-    [SerializeField]
     private float visionRange = 10f;
     [SerializeField]
     private float maxAngleAccuracyOffset = 0f; // how much the enemy can miss the player by (in degrees)  
+
+    private int maxAmmo = 6;
+    private int currentAmmo;
+    private float reloadTime = 1f;
 
     void Start()
     {
@@ -33,14 +35,24 @@ public class Shooting : MonoBehaviour
         UpdateBulletSpawnPosition();
         if (Vector2.Distance(transform.position, Player.transform.position) < visionRange)
         {
+            if (currentAmmo == 0)
+            {
+                yield return new WaitForSeconds(reloadTime);
+                currentAmmo = maxAmmo;
+            }
             yield return new WaitForSeconds(fireRate);
             GameObject bullet = Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
+            currentAmmo--;
             bullet.GetComponent<Rigidbody2D>().velocity = ((Player.transform.position - transform.position).normalized + new Vector3(Random.Range(-maxAngleAccuracyOffset, maxAngleAccuracyOffset), Random.Range(-maxAngleAccuracyOffset, maxAngleAccuracyOffset), 0)) * bulletSpeed;
-            Destroy(bullet, bulletLifeTime);
             StartCoroutine(Shoot());
         }
         else
         {
+            if (currentAmmo < maxAmmo)
+            {
+                yield return new WaitForSeconds(reloadTime);
+                currentAmmo = maxAmmo;
+            }
             yield return new WaitForSeconds(0.1f);
             StartCoroutine(Shoot());
         }

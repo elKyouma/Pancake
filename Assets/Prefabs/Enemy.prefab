@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5856950918117614332}
   - component: {fileID: 173031017432650558}
   - component: {fileID: 4099930963964870431}
-  - component: {fileID: 2010227557252166042}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -84,21 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2010227557252166042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631329615734652543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab690d5f9b7066644820b0659ae187e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2301326867078163855, guid: dc87bc6f2d9b372478086280f07211e5, type: 3}
-  distance: 2
-  bulletSpeed: 2
 --- !u!1 &7395074662717845958
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +213,7 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010227557252166042}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
         m_MethodName: OnWeaponMovement
         m_Mode: 0
@@ -245,7 +229,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010227557252166042}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
         m_MethodName: OnFire
         m_Mode: 0
@@ -261,7 +245,7 @@ MonoBehaviour:
     m_ActionName: Player/Fire[/DualSenseGamepadHID/rightTrigger,/DualSenseGamepadHID1/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010227557252166042}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
         m_MethodName: OnMouseMovement
         m_Mode: 0

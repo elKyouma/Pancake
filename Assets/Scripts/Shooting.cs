@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
     private GameObject Player;
     [SerializeField, Tooltip("default is Prefabs\\Bullet")]
     private GameObject Bullet;
+    [SerializeField]
     private GameObject BulletSpawn;
     [SerializeField]
     private float fireRate = 0.5f;
@@ -22,13 +23,14 @@ public class Shooting : MonoBehaviour
     private int maxAmmo = 6;
     private int currentAmmo;
     private float reloadTime = 1f;
+    private float bulletRadius;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         if (Bullet == null) Bullet = Resources.Load<GameObject>("Prefabs\\Bullet");
         if (Bullet == null) Debug.LogError("Shooting: Bullet is null");
-        BulletSpawn = GameObject.Find("Weapon");
+        bulletRadius = Bullet.transform.localScale.x;
         currentAmmo = maxAmmo;
         StartCoroutine(Shoot());
     }
@@ -37,9 +39,7 @@ public class Shooting : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, Player.transform.position);
         if (distanceToPlayer > visionRange) return false;
-        int layerMask = 1 << 6; // Obstacles layer
-        RaycastHit2D hitWall = Physics2D.Linecast(transform.position, Player.transform.position, layerMask);
-        return !hitWall;
+        return RaycastHelper.IsInBulletSight(Player.transform.position, transform.position, bulletRadius);
     }
 
     IEnumerator Shoot()

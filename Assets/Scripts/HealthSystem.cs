@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    public int health;
-    private int minHealth = 0;
+    public float health;
+    private float minHealth = 0;
     [SerializeField]
-    private int maxHealth = 100;
+    private float maxHealth = 100;
 
     public GameObject healthBar;
     [SerializeField]
@@ -22,7 +22,7 @@ public class HealthSystem : MonoBehaviour
         UpdateHealthBar();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         UpdateHealthBar();

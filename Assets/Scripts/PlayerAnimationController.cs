@@ -2,28 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.InputSystem;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    [SerializeField] private Sprite[] frames;
-    [SerializeField] private float framesPerSecond;
-    // [SerializeField] private bool loop;
+    [SerializeField]
+    private Animator animator;
 
-    void Start()
+    public void OnPlayerMovement(InputAction.CallbackContext ctx)
     {
-        StartCoroutine(Animate());
-    }
-
-    IEnumerator Animate()
-    {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        int frameIndex = 0;
-
-        while (true)
-        {
-            spriteRenderer.sprite = frames[frameIndex];
-            frameIndex = (frameIndex + 1) % frames.Length;
-            yield return new WaitForSeconds(1f / framesPerSecond);
-        }
+        // Add this function to the Player GameObject -> PlayerInput -> Actions -> Player -> Movement -> Interactions -> Add -> PlayerAnimationController -> OnPlayerMovement
+        Vector2 movement = ctx.ReadValue<Vector2>();
+        Debug.Log(movement.magnitude);
+        animator.SetBool("isWalking", movement.magnitude > 0);
     }
 }

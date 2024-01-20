@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    [SerializeField]
     private GameObject Player;
-    [SerializeField]
+    [SerializeField, Tooltip("default is Prefabs\\Bullet")]
     private GameObject Bullet;
-    [SerializeField]
     private GameObject BulletSpawn;
     [SerializeField]
     private float fireRate = 0.5f;
@@ -28,15 +26,26 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        if (Bullet == null) Bullet = Resources.Load<GameObject>("Prefabs\\Bullet");
+        if (Bullet == null) Debug.LogError("Shooting: Bullet is null");
         BulletSpawn = GameObject.Find("Weapon");
         currentAmmo = maxAmmo;
         StartCoroutine(Shoot());
     }
 
+    bool IsPlayerInRange()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, Player.transform.position);
+        if (distanceToPlayer > visionRange) return false;
+        int layerMask = 1 << 6; // Obstacles layer
+        RaycastHit2D hitWall = Physics2D.Linecast(transform.position, Player.transform.position, layerMask);
+        return !hitWall;
+    }
+
     IEnumerator Shoot()
     {
         UpdateBulletSpawnPosition();
-        if (Vector2.Distance(transform.position, Player.transform.position) < visionRange)
+        if (IsPlayerInRange())
         {
             if (currentAmmo == 0)
             {
@@ -51,7 +60,7 @@ public class Shooting : MonoBehaviour
         }
         else
         {
-            if (currentAmmo < maxAmmo)
+            if (currentAmmo < maxAmmo / 2)
             {
                 yield return new WaitForSeconds(reloadTime);
                 currentAmmo = maxAmmo;

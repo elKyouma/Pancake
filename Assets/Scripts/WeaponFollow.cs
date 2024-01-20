@@ -59,7 +59,7 @@ public class WeaponFollow : MonoBehaviour
         SpecialEffects.Instance.ScreenShake(0.3f, 20f);
         StartCoroutine(Vibrate());
         audio.PlayOneShot(clip);
-        transform.LeanMoveLocal(weaponDir * distance * 0.1f, 0.06f).setOnComplete(() => transform.LeanMoveLocal(weaponDir * distance, 0.4f).setEaseOutBounce());
+        GetComponentsInChildren<Transform>()[1].LeanMoveLocal(weaponDir * distance * 0.3f, 0.06f).setOnComplete(() => transform.LeanMoveLocal(weaponDir * distance, 0.3f).setEaseOutBounce());
 
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
         go.GetComponent<Rigidbody2D>().velocity = weaponDir * bulletSpeed;
@@ -106,10 +106,11 @@ public class WeaponFollow : MonoBehaviour
                 shootCount = 0;
                 UpdateAmmoText();
             }
-            transform.localPosition = weaponDir * distance;
 
         }
         else
             reloadTimer -= Time.deltaTime;
+
+        transform.localPosition = weaponDir * distance;
     }
 }

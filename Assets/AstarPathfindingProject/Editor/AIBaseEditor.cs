@@ -104,6 +104,7 @@ namespace Pathfinding {
 			FloatField("endReachedDistance", min: 0f);
 
 			if (isAIPath) {
+				PropertyField("butMustSeePlayer");
 				PropertyField("alwaysDrawGizmos");
 				PropertyField("whenCloseToDestination");
 				PropertyField("constrainInsideGraph");

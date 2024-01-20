@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 8496463894241816476}
   - component: {fileID: 638142316891648560}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: GunEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +300,8 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 0.7
-  endReachedDistance: 0.2
+  endReachedDistance: 7
+  butMustSeePlayer: 1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -332,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 0}
+  BulletSpawn: {fileID: 631329615734652543}
   fireRate: 0.5
   bulletSpeed: 10
   visionRange: 10

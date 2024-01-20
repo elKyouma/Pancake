@@ -49,7 +49,7 @@ public class WeaponFollow : MonoBehaviour
     {
         if (Camera.main)
         {
-            weaponDir = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>()) - transform.parent.position;
+            weaponDir = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>()) - transform.parent.position + Vector3.up * 0.5f;
             weaponDir.Normalize();
         }
     }
@@ -113,6 +113,6 @@ public class WeaponFollow : MonoBehaviour
         else
             reloadTimer -= Time.deltaTime;
 
-        transform.localPosition = weaponDir * distance;
+        transform.localPosition = (Vector3)weaponDir * distance + Vector3.up * 0.5f;
     }
 }

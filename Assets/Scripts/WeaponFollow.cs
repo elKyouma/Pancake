@@ -18,7 +18,18 @@ public class WeaponFollow : MonoBehaviour
     private float reloadTimer = 0.0f;
     private Vector2 weaponDir;
 
+    [SerializeField]
+    private AudioClip clip;
+
+    private AudioSource audio;
+
     private bool CanShoot { get { return reloadTimer < 0f;  } }
+
+    private void Awake()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     public void OnWeaponMovement(InputAction.CallbackContext ctx)
     {
         weaponDir = ctx.ReadValue<Vector2>();
@@ -39,10 +50,11 @@ public class WeaponFollow : MonoBehaviour
 
         SpecialEffects.Instance.ScreenShake(0.3f, 20f);
         StartCoroutine(Vibrate());
+        audio.PlayOneShot(clip);
         transform.LeanMoveLocal(weaponDir * distance * 0.1f, 0.06f).setOnComplete(() => transform.LeanMoveLocal(weaponDir * distance, 0.4f).setEaseOutBounce());
 
-        GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(Vector3.right, Vector3.up), null);
-        go.GetComponent<Rigidbody>().velocity = weaponDir * bulletSpeed;
+        GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
+        go.GetComponent<Rigidbody2D>().velocity = weaponDir * bulletSpeed;
 
         reloadTimer = reloadTime;
     }

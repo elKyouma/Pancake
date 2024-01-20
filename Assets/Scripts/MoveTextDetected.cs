@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DetectionText : MonoBehaviour
 {
-    public Text detectionText;
     public float speed = 5f;
     public float delayDuration = 1.5f;
 
@@ -38,10 +36,10 @@ public class DetectionText : MonoBehaviour
     void MoveText()
     {
         // Calculate the new position based on the current position and speed
-        Vector3 newPosition = detectionText.transform.position + Vector3.right * speed * Time.deltaTime;
+        Vector3 newPosition = transform.position + Vector3.right * speed * Time.deltaTime;
 
         // Set the new position
-        detectionText.transform.position = newPosition;
+        transform.position = newPosition;
 
         // Check if the text has reached the middle of the screen
         if (newPosition.x > Screen.width / 2)
@@ -54,6 +52,6 @@ public class DetectionText : MonoBehaviour
     void ResetTextPosition()
     {
         // Reset the text position to the left of the screen
-        detectionText.transform.position = new Vector3(-Screen.width / 2, Screen.height / 2, 0f);
+        transform.position = new Vector3(-Screen.width / 2, Screen.height / 2, 0f);
     }
 }

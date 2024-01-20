@@ -280,6 +280,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5941b2ce-24b2-4ad6-982b-ed49103cba65
     m_ActionName: Player/Fire[/DualSenseGamepadHID/rightTrigger,/DualSenseGamepadHID1/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2010227557252166042}
+        m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
+        m_MethodName: OnWeaponMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 48836810-546d-4fe7-85ae-174967891c87
+    m_ActionName: Player/MousePos[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -24,6 +24,15 @@ public class WeaponFollow : MonoBehaviour
         weaponDir = ctx.ReadValue<Vector2>();
     }
 
+    public void OnMouseMovement(InputAction.CallbackContext ctx)
+    {
+        if (Camera.main)
+        {
+            weaponDir = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>()) - transform.parent.position;
+            weaponDir.Normalize();
+        }
+    }
+
     public void OnFire(InputAction.CallbackContext ctx)
     {
         if (ctx.ReadValue<float>() < 0.5f || !CanShoot) return;

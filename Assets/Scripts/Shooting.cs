@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     private GameObject Player;
+    [SerializeField, Tooltip("default is Prefabs\\Bullet")]
     private GameObject Bullet;
     private GameObject BulletSpawn;
     [SerializeField]
@@ -25,7 +26,8 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Bullet = Resources.Load<GameObject>("Prefabs/Bullet.prefab");
+        if (Bullet == null) Bullet = Resources.Load<GameObject>("Prefabs\\Bullet");
+        if (Bullet == null) Debug.LogError("Shooting: Bullet is null");
         BulletSpawn = GameObject.Find("Weapon");
         currentAmmo = maxAmmo;
         StartCoroutine(Shoot());
@@ -33,24 +35,16 @@ public class Shooting : MonoBehaviour
 
     bool IsPlayerInRange()
     {
-        if (Vector2.Distance(transform.position, Player.transform.position) < visionRange) return false;
+        float distanceToPlayer = Vector2.Distance(transform.position, Player.transform.position);
+        if (distanceToPlayer > visionRange) return false;
         int layerMask = 1 << 6; // Obstacles layer
-
-        bool hitWall = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out _, Mathf.Infinity, layerMask);
-        Debug.Log($"test {hitWall}");
-        if (!hitWall)
-        {
-            Debug.DrawRay(transform.position, Player.transform.position - transform.position, Color.yellow);
-            Debug.Log("Did Hit");
-            return true;
-        }
-        return false;
+        RaycastHit2D hitWall = Physics2D.Linecast(transform.position, Player.transform.position, layerMask);
+        return !hitWall;
     }
 
     IEnumerator Shoot()
     {
         UpdateBulletSpawnPosition();
-        Debug.Log($"Test {IsPlayerInRange()}");
         if (IsPlayerInRange())
         {
             if (currentAmmo == 0)

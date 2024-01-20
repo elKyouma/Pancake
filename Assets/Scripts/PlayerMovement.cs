@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private AudioSource audioSource; // Reference to the Audio Source component
     private bool isWalking = false; // Flag to track if the player is walking
-    private float timeSinceLastFootstep; // Time since the last footstep sound
+    private float timeSinceLastFootstep = 0f; // Time since the last footstep sound
 
 
     private void Awake()
@@ -31,20 +31,34 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveVector = context.ReadValue<Vector2>();
+    }
 
-        // Check if enough time has passed to play the next footstep sound
-        if (Time.time - timeSinceLastFootstep >= Random.Range(minTimeBetweenFootsteps, maxTimeBetweenFootsteps))
+    public bool checkMovement()
+    {
+        if (Mathf.Approximately(rb.velocity.sqrMagnitude, 0f))
         {
-            // Play a random footstep sound from the array
-            audioSource.PlayOneShot(footstepSound);
-
-            timeSinceLastFootstep = Time.time; // Update the time since the last footstep sound
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
     private void Update()
     {
         rb.velocity = speed * (Vector3)moveVector;
-        
+        isWalking = checkMovement();
+        if (isWalking)
+        {
+            // Check if enough time has passed to play the next footstep sound
+            if (Time.time - timeSinceLastFootstep >= Random.Range(minTimeBetweenFootsteps, maxTimeBetweenFootsteps))
+            {
+                // Play a random footstep sound from the array
+                audioSource.PlayOneShot(footstepSound);
+
+                timeSinceLastFootstep = Time.time; // Update the time since the last footstep sound
+            }
+        }
     }
 }

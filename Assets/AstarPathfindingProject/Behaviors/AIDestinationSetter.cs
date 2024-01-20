@@ -15,6 +15,7 @@ namespace Pathfinding {
 	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_a_i_destination_setter.php")]
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
+		[HideInInspector]
 		public Transform target;
 		IAstarAI ai;
 
@@ -25,6 +26,7 @@ namespace Pathfinding {
 			// frame as the destination is used for debugging and may be used for other things by other
 			// scripts as well. So it makes sense that it is up to date every frame.
 			if (ai != null) ai.onSearchPath += Update;
+			target = GameObject.FindWithTag("Player").transform;
 		}
 
 		void OnDisable () {

@@ -190,7 +190,7 @@ namespace Pathfinding
 		{
 			base.OnEnable();
 			Player = GameObject.FindGameObjectWithTag("Player");
-			bulletRadius = Resources.Load<GameObject>("Prefabs\\Bullet").transform.localScale.x;
+			bulletRadius = Resources.Load<GameObject>("Prefabs\\Enemy Bullet").transform.localScale.x;
 		}
 
 		private bool IsInBulletSight()

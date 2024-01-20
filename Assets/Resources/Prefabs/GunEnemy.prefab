@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273444ace85e5124aa9391989d7e43f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 0}
+  Bullet: {fileID: 2149584335361856898, guid: dc87bc6f2d9b372478086280f07211e5, type: 3}
   BulletSpawn: {fileID: 631329615734652543}
   fireRate: 0.5
   bulletSpeed: 10

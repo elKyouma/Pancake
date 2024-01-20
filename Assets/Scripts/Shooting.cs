@@ -28,7 +28,6 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        if (Bullet == null) Bullet = Resources.Load<GameObject>("Prefabs\\Bullet");
         if (Bullet == null) Debug.LogError("Shooting: Bullet is null");
         bulletRadius = Bullet.transform.localScale.x;
         currentAmmo = maxAmmo;
@@ -40,6 +39,13 @@ public class Shooting : MonoBehaviour
         float distanceToPlayer = Vector2.Distance(transform.position, Player.transform.position);
         if (distanceToPlayer > visionRange) return false;
         return RaycastHelper.IsInBulletSight(Player.transform.position, transform.position, bulletRadius);
+    }
+
+    void OnDrawGizmos()
+    {
+        if (Player == null)
+            Player = GameObject.FindGameObjectWithTag("Player");
+        Gizmos.DrawLine(Player.transform.position, transform.position);
     }
 
     IEnumerator Shoot()
@@ -69,7 +75,6 @@ public class Shooting : MonoBehaviour
             StartCoroutine(Shoot());
         }
     }
-
     void UpdateBulletSpawnPosition()
     {
         BulletSpawn.transform.position = transform.position + (Player.transform.position - transform.position).normalized;

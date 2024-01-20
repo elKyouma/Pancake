@@ -13,6 +13,7 @@ public class RaycastHelper
 
     public static bool IsInBulletSight(Vector2 pos, Vector2 view, float bulletRadius)
     {
+        // bulletRadius /= 2;
         return IsInSight(pos, view + Vector2.down * bulletRadius)
         && IsInSight(pos, view + Vector2.up * bulletRadius)
         && IsInSight(pos, view + Vector2.left * bulletRadius)

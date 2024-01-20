@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class WeaponFollow : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class WeaponFollow : MonoBehaviour
     [SerializeField]
     private float bulletSpeed = 20f;
 
+    [SerializeField]
+    private int magazineSize = 4;
+
+    private int shootCount = 0;
     private float reloadTime = 0.5f;
     private float reloadTimer = 0.0f;
     private Vector2 weaponDir;
@@ -22,6 +27,9 @@ public class WeaponFollow : MonoBehaviour
     private AudioClip clip;
 
     private AudioSource audio;
+
+    [SerializeField]
+    private Text ammoText;
 
     private bool CanShoot { get { return reloadTimer < 0f;  } }
 
@@ -55,8 +63,28 @@ public class WeaponFollow : MonoBehaviour
 
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
         go.GetComponent<Rigidbody2D>().velocity = weaponDir * bulletSpeed;
+        shootCount++;
+        if(shootCount % magazineSize == 0)
+        {
+            reloadTime = 2.0f;
+
+        }
+        else
+        {
+            reloadTime = 0.5f;
+        }
 
         reloadTimer = reloadTime;
+        UpdateAmmoText();
+    }
+
+    private void UpdateAmmoText()
+    {
+        if (ammoText != null)
+        {
+
+            ammoText.text = $"Ammo: {magazineSize - shootCount}/{magazineSize}";
+        }
     }
 
     private IEnumerator Vibrate()
@@ -72,7 +100,15 @@ public class WeaponFollow : MonoBehaviour
     private void Update()
     {
         if (CanShoot)
+        {
+            if(shootCount % magazineSize == 0)
+            {
+                shootCount = 0;
+                UpdateAmmoText();
+            }
             transform.localPosition = weaponDir * distance;
+
+        }
         else
             reloadTimer -= Time.deltaTime;
     }

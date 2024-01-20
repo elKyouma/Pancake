@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    [SerializeField]
     private GameObject Player;
-    [SerializeField]
     private GameObject Bullet;
-    [SerializeField]
     private GameObject BulletSpawn;
     [SerializeField]
     private float fireRate = 0.5f;
@@ -28,15 +25,33 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Bullet = Resources.Load<GameObject>("Prefabs/Bullet.prefab");
         BulletSpawn = GameObject.Find("Weapon");
         currentAmmo = maxAmmo;
         StartCoroutine(Shoot());
     }
 
+    bool IsPlayerInRange()
+    {
+        if (Vector2.Distance(transform.position, Player.transform.position) < visionRange) return false;
+        int layerMask = 1 << 6; // Obstacles layer
+
+        bool hitWall = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out _, Mathf.Infinity, layerMask);
+        Debug.Log($"test {hitWall}");
+        if (!hitWall)
+        {
+            Debug.DrawRay(transform.position, Player.transform.position - transform.position, Color.yellow);
+            Debug.Log("Did Hit");
+            return true;
+        }
+        return false;
+    }
+
     IEnumerator Shoot()
     {
         UpdateBulletSpawnPosition();
-        if (Vector2.Distance(transform.position, Player.transform.position) < visionRange)
+        Debug.Log($"Test {IsPlayerInRange()}");
+        if (IsPlayerInRange())
         {
             if (currentAmmo == 0)
             {
@@ -51,7 +66,7 @@ public class Shooting : MonoBehaviour
         }
         else
         {
-            if (currentAmmo < maxAmmo)
+            if (currentAmmo < maxAmmo / 2)
             {
                 yield return new WaitForSeconds(reloadTime);
                 currentAmmo = maxAmmo;

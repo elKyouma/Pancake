@@ -31,11 +31,13 @@ public class WeaponFollow : MonoBehaviour
     [SerializeField]
     private Text ammoText;
 
+    private Transform graphic;
     private bool CanShoot { get { return reloadTimer < 0f;  } }
 
     private void Awake()
     {
         audio = GetComponent<AudioSource>();
+        graphic = GetComponentsInChildren<Transform>()[1];
     }
 
     public void OnWeaponMovement(InputAction.CallbackContext ctx)
@@ -56,10 +58,10 @@ public class WeaponFollow : MonoBehaviour
     {
         if (ctx.ReadValue<float>() < 0.5f || !CanShoot) return;
 
-        SpecialEffects.Instance.ScreenShake(0.3f, 20f);
+        SpecialEffects.Instance.ScreenShake(0.3f, 15f);
         StartCoroutine(Vibrate());
         audio.PlayOneShot(clip);
-        GetComponentsInChildren<Transform>()[1].LeanMoveLocal(weaponDir * distance * 0.3f, 0.06f).setOnComplete(() => transform.LeanMoveLocal(weaponDir * distance, 0.3f).setEaseOutBounce());
+        graphic.LeanMoveLocal(Vector3.left * distance * 0.5f, 0.08f).setOnComplete(() => graphic.LeanMoveLocal(Vector3.zero, 0.4f).setEaseOutBounce());
 
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
         go.GetComponent<Rigidbody2D>().velocity = weaponDir * bulletSpeed;

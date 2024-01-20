@@ -14,6 +14,10 @@ public class WeaponFollow : MonoBehaviour
     [SerializeField]
     private float bulletSpeed = 20f;
 
+    [SerializeField]
+    private int magazineSize = 4;
+
+    private float shootCount = 0;
     private float reloadTime = 0.5f;
     private float reloadTimer = 0.0f;
     private Vector2 weaponDir;
@@ -55,6 +59,16 @@ public class WeaponFollow : MonoBehaviour
 
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
         go.GetComponent<Rigidbody2D>().velocity = weaponDir * bulletSpeed;
+        shootCount++;
+        if(shootCount == magazineSize)
+        {
+            reloadTime = 2.0f;
+            shootCount = 0;
+        }
+        else
+        {
+            reloadTime = 0.5f;
+        }
 
         reloadTimer = reloadTime;
     }

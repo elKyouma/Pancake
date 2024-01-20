@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 5856950918117614332}
   - component: {fileID: 173031017432650558}
   - component: {fileID: 4099930963964870431}
-  - component: {fileID: 2010227557252166042}
-  - component: {fileID: 3939261838224869}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -29,11 +27,11 @@ Transform:
   m_GameObject: {fileID: 631329615734652543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.206, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4234132984439572357}
+  m_Father: {fileID: 6687767842572265498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &173031017432650558
 MeshFilter:
@@ -85,13 +83,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2010227557252166042
+--- !u!1 &1003742907167368221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6687767842572265498}
+  - component: {fileID: 2243486060076339752}
+  - component: {fileID: 6479623659221161898}
+  m_Layer: 0
+  m_Name: WeaponPlaceHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6687767842572265498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003742907167368221}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5856950918117614332}
+  m_Father: {fileID: 4234132984439572357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2243486060076339752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631329615734652543}
+  m_GameObject: {fileID: 1003742907167368221}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab690d5f9b7066644820b0659ae187e9, type: 3}
@@ -103,13 +135,13 @@ MonoBehaviour:
   magazineSize: 4
   clip: {fileID: 8300000, guid: 71d426b5dfe546645a559d156c506ab7, type: 3}
   ammoText: {fileID: 0}
---- !u!82 &3939261838224869
+--- !u!82 &6479623659221161898
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631329615734652543}
+  m_GameObject: {fileID: 1003742907167368221}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -401,9 +433,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5856950918117614332}
   - {fileID: 8064910690095065788}
   - {fileID: 339725235563016867}
+  - {fileID: 6687767842572265498}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7739187078585031203
@@ -449,7 +481,7 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010227557252166042}
+      - m_Target: {fileID: 2243486060076339752}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
         m_MethodName: OnWeaponMovement
         m_Mode: 0
@@ -465,7 +497,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010227557252166042}
+      - m_Target: {fileID: 2243486060076339752}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
         m_MethodName: OnFire
         m_Mode: 0
@@ -481,7 +513,7 @@ MonoBehaviour:
     m_ActionName: Player/Fire[/DualSenseGamepadHID/rightTrigger,/DualSenseGamepadHID1/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010227557252166042}
+      - m_Target: {fileID: 2243486060076339752}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
         m_MethodName: OnMouseMovement
         m_Mode: 0

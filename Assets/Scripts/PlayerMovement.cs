@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxTimeBetweenFootsteps = 0.6f; // Maximum time between footstep sounds
 
     private AudioSource audioSource; // Reference to the Audio Source component
-    private bool isWalking = false; // Flag to track if the player is walking
+    public bool isWalking = false; // Flag to track if the player is walking
     private float timeSinceLastFootstep = 0f; // Time since the last footstep sound
 
 

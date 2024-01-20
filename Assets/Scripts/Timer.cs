@@ -64,10 +64,10 @@ public class Timer : MonoBehaviour {
             return;
         }
 
-        float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
+        float miliSeconds = Mathf.FloorToInt((time * 60) % 60);
 
-        string currentTime = string.Format("{00:00}{01:00}", minutes, seconds);
+        string currentTime = string.Format("{00:00}{01:00}", seconds, miliSeconds);
         firstMinute.text = currentTime[0].ToString();
         secondMinute.text = currentTime[1].ToString();
         firstSecond.text = currentTime[2].ToString();

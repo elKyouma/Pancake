@@ -27,6 +27,9 @@ public class Shooting : MonoBehaviour
 
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        BulletSpawn = GameObject.Find("Weapon");
+        currentAmmo = maxAmmo;
         StartCoroutine(Shoot());
     }
 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8478772583843314111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GraphicPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7540584097480759318}
   - component: {fileID: 430129869555242144}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 3465347000507971033}
   - component: {fileID: 3116184057261795415}
   - component: {fileID: 4673242261426226220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RiffleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.25
 --- !u!50 &8316311739635391651
 Rigidbody2D:
   serializedVersion: 4
@@ -271,6 +271,7 @@ MonoBehaviour:
   canSearchCompability: 0
   orientation: 1
   enableRotation: 0
+  velocity2D: {x: 0, y: 0}
   autoRepath:
     mode: 2
     interval: 0.5
@@ -282,7 +283,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 0.7
-  endReachedDistance: 7
+  endReachedDistance: 6.5
   butMustSeePlayer: 1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
@@ -338,7 +339,7 @@ GameObject:
   - component: {fileID: 9161573930012130409}
   - component: {fileID: 4577665523371333986}
   - component: {fileID: 7058978830704166651}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3929012643160329462}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

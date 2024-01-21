@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  footstepSound: {fileID: 0}
+  footstepSound: {fileID: 8300000, guid: 8f6357df371f35b44a1e0a623667fc27, type: 3}
   minTimeBetweenFootsteps: 0.3
   maxTimeBetweenFootsteps: 0.6
   isWalking: 0

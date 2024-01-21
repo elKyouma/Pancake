@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour {
     [SerializeField]
@@ -28,8 +29,11 @@ public class Timer : MonoBehaviour {
     [SerializeField]
     private float flashDuration = 1f; //The full length of the flash
 
+    private UIDetectedCutscene cutscene;
+
     private void Start() {
         ResetTimer();
+        cutscene = transform.parent.GetComponent<UIDetectedCutscene>();
     }
 
     private void ResetTimer() {
@@ -50,6 +54,7 @@ public class Timer : MonoBehaviour {
             UpdateTimerDisplay(timer);
         } else {
             FlashTimer();
+            cutscene.Activate();
         }
     }
 

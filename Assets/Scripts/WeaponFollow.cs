@@ -57,9 +57,6 @@ public class WeaponFollow : MonoBehaviour
         {
             mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
             useMouse = true;
-            Vector2 dir = mousePos - (Vector2)transform.parent.position;
-            dir.Normalize();
-            WeaponRotate(dir);
         }
     }
 
@@ -123,11 +120,13 @@ public class WeaponFollow : MonoBehaviour
             weaponDir = (Vector3)mousePos - transform.parent.position;
             weaponDir.Normalize();
         }
+        WeaponRotate();
 
         transform.localPosition = (Vector3)weaponDir * distance + Vector3.up * 0.5f;
     }
-    private void WeaponRotate(Vector3 dir)
+    public void WeaponRotate()
     {
+        Vector2 dir = weaponDir;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         if (angle > 90 || angle < -90)

@@ -6,24 +6,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerFlipSide : MonoBehaviour
 {
-    public void OnMouseMovement(InputAction.CallbackContext ctx)
-    // Add this function to the Player GameObject -> PlayerInput -> Actions -> Player -> Movement -> Interactions -> Add -> PlayerFlipSide -> OnMouseMovement
-    // GRaphics GameObject is outdated. Should be removed.
+    public void OnFlipSide(InputAction.CallbackContext ctx)
     {
-        if (Camera.main)
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+        Vector2 playerPos = transform.position;
+        Vector2 direction = mousePos - playerPos;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        if (angle > 90 || angle < -90)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
-            Vector2 playerPos = transform.position;
-            Vector2 dir = mousePos - playerPos;
-            dir.Normalize();
-            if (dir.x < 0)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }
+

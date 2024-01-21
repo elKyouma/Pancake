@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8355672867594016761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4477770664960047622}
+  - component: {fileID: 6284218225388860014}
+  m_Layer: 0
+  m_Name: "A_ - edytowa\u0107 jak zmienimy rozmiar mapy"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4477770664960047622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8355672867594016761}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6284218225388860014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8355672867594016761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAIIew7qSrpYQIAABoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3GZpIQemsJIT2QMKGZXHyRrTXWIEseSeYrw3/vrmxjl05PLG+/3ttd+YtJ7SrIvLELK8XSCGDfR4xs9m3UO1/gwDdGr+UJuphPKXxBQTzEvHMvDeIxpTlTgrcy+6E3ioIjBGstc2PLudjAzDjvEM65coAuazxla4S+RuyAPzdTSjmiNZ6QdUJrGo3OaGagPdg+NLq9b0Mb69RYIbbWmeJlBYKI9ykPXfG7pqRGSW0E0c+MUtK1fJg/VkHvuirAAgkWkqO8wCG6nVLPAuSm8MR2mP6W5w58K9/y45O0OKimLvtpmumV3G0bZjuuaur0cBdINTWX/7hv4uDOrSlfurZxRC18IbPtOz9m3PnBdIfwU089DvPZc7XlqYLPAvSrWVhTa4FOb2tKrR2Mn/q/F2WzArJtjzdUr8C6Guyo21C7H9JwDuIPMyXLNEzyrgHWyoSBhwsAi6v5hYTDfbi2BKLE4sPBb74ZHlLreJbWeXS1KjXRS01tKZTNw8xITe1nxmqwwwoVaK78cYV1/PUKr3z/z3rm9Gba7q2vewpXKQHu46PoyrUy+8u2XGH2S3DFW+2V1NCPmhyvOKiZ0bq5sKGkLm1d25xng7RNLcXft8XGkD+mqYDxJOZpfA83j+M4nTxEU5iKCeQxsHB8UqNOrlYN0XY8uDbdF9d4aN2nZLSwvArXLizfL+SpNK6PlDo368wC6LemwoU4WGyC71LMhcQBrcF7qcPC2VfClMm2IJJLoSQonR+85UlfJWGV3BlPSMJm4duRMIIvx7yysJOwp+ZdsTM7/wFQSwMEFAAACAgAAAgh7N7SApJtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJRappFUlJKqpG5YWKSoWmqroWRYZK5mYFlqmWKeWqaYapSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7DupKulhAgAAGgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7N7SApJtAAAAeAAAAAkAJAAAAAAAAAAAAAAArgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABmAwAAAAA=
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 1
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 10
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1

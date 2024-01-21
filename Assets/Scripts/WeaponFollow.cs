@@ -27,13 +27,11 @@ public class WeaponFollow : MonoBehaviour
     private Vector2 weaponDir;
     private Vector2 mousePos;
 
-    [SerializeField]
-    private float weaponOffset = 0.5f;
 
     [SerializeField]
     private AudioClip clip;
 
-    private AudioSource audioSource;
+    private AudioSource audio;
 
     [SerializeField]
     private Text ammoText;
@@ -43,7 +41,7 @@ public class WeaponFollow : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
         graphic = GetComponentsInChildren<Transform>()[1];
     }
 
@@ -59,6 +57,9 @@ public class WeaponFollow : MonoBehaviour
         {
             mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
             useMouse = true;
+            Vector2 dir = mousePos - (Vector2)transform.parent.position;
+            dir.Normalize();
+            WeaponRotate(dir);
         }
     }
 
@@ -68,7 +69,7 @@ public class WeaponFollow : MonoBehaviour
 
         SpecialEffects.Instance.ScreenShake(0.3f, 15f);
         StartCoroutine(Vibrate());
-        audioSource.PlayOneShot(clip);
+        audio.PlayOneShot(clip);
         graphic.LeanMoveLocal(Vector3.left * distance * 0.5f, 0.08f).setOnComplete(() => graphic.LeanMoveLocal(Vector3.zero, 0.4f).setEaseOutBounce());
 
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
@@ -86,9 +87,12 @@ public class WeaponFollow : MonoBehaviour
 
     private void UpdateAmmoText()
     {
-        if (ammoText)
+        if (ammoText != null)
+        {
+
             ammoText.text = $"Ammo: {magazineSize - shootCount}/{magazineSize}";
         }
+    }
 
     private IEnumerator Vibrate()
     {
@@ -122,9 +126,17 @@ public class WeaponFollow : MonoBehaviour
 
         transform.localPosition = (Vector3)weaponDir * distance + Vector3.up * 0.5f;
     }
-    private void RotateWeapon(Vector3 dir)
+    private void WeaponRotate(Vector3 dir)
     {
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward * weaponOffset);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (angle > 90 || angle < -90)
+        {
+            transform.localScale = new Vector3(1, -1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }

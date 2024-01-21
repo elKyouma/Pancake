@@ -12,6 +12,8 @@ public class Shooting : MonoBehaviour
     [SerializeField]
     private GameObject BulletSpawn;
     [SerializeField]
+    private GameObject WeaponPlaceholder;
+    [SerializeField]
     private float fireRate = 0.5f;
     private float nextFire = 0.0f;
 
@@ -36,6 +38,11 @@ public class Shooting : MonoBehaviour
         StartCoroutine(Shoot());
     }
 
+    void Update()
+    {
+        if (IsPlayerInRange()) UpdateBulletSpawnPosition();
+    }
+
     bool IsPlayerInRange()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, Player.transform.position);
@@ -52,7 +59,6 @@ public class Shooting : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        UpdateBulletSpawnPosition();
         if (IsPlayerInRange())
         {
             if (currentAmmo == 0)
@@ -79,6 +85,8 @@ public class Shooting : MonoBehaviour
     }
     void UpdateBulletSpawnPosition()
     {
-        BulletSpawn.transform.position = Graphic.transform.position + (Player.transform.position - Graphic.transform.position).normalized;
+        var dist = WeaponPlaceholder.transform.position - Player.transform.position;
+        float degree = 180 - Vector2.SignedAngle(dist, Vector2.right);
+        WeaponPlaceholder.transform.rotation = Quaternion.Euler(0, 0, degree);
     }
 }

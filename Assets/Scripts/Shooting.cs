@@ -24,8 +24,10 @@ public class Shooting : MonoBehaviour
     [SerializeField]
     private float maxAngleAccuracyOffset = 0f; // how much the enemy can miss the player by (in degrees)  
 
+    [SerializeField]
     private int maxAmmo = 6;
     private int currentAmmo;
+    [SerializeField]
     private float reloadTime = 1f;
     private float bulletRadius;
 

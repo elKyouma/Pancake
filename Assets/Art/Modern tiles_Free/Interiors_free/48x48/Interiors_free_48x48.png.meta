@@ -298,6 +298,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Map
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1017
+        width: 103
+        height: 62
+      alignment: 9
+      pivot: {x: 0.500483, y: -0.08655179}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e4dcb804b73344481ccb77fdffe51e
+      internalID: 2001702987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Globus
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 1034
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3742de0459cc62f469ed52b51537b1b9
+      internalID: -876439923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -312,7 +354,9 @@ TextureImporter:
       Bookcase1: -1448646503
       Bookcase2: -259594535
       DeskWithMirrors: 1013403705
+      Globus: -876439923
       Lamp: 268802089
+      Map: 2001702987
       Mirror: -1734034760
       Safe: -22030150
       Tree: 1666567679

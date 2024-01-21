@@ -110,7 +110,6 @@ public class WeaponFollow : MonoBehaviour
                 shootCount = 0;
                 UpdateAmmoText();
             }
-
         }
         else
             reloadTimer -= Time.deltaTime;

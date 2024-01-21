@@ -193,6 +193,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: board
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 2276
+        width: 98
+        height: 76
+      alignment: 9
+      pivot: {x: 0.48879942, y: 0.08595035}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7484940960020e3469445cac3f9119e4
+      internalID: -1434805296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Safe
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 2254
+        width: 49
+        height: 95
+      alignment: 9
+      pivot: {x: 0.49253377, y: 0.12639289}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99fa26cef2fccc045bed27d91da7a5f0
+      internalID: -22030150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lamp
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1460
+        width: 43
+        height: 107
+      alignment: 9
+      pivot: {x: 0.54407877, y: 0.14668675}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545aa96c54824014999fe1ff0abbc8b0
+      internalID: 268802089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mirror
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 977
+        width: 69
+        height: 115
+      alignment: 9
+      pivot: {x: 0.48899466, y: 0.1170235}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa8dcb41ba67b543881a046161cd0e9
+      internalID: -1734034760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeskWithMirrors
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1839
+        width: 90
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5184328, y: 0.18479736}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4acbc6d4ac6b34da0df0819edf88f2
+      internalID: 1013403705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -206,8 +311,13 @@ TextureImporter:
     nameFileIdTable:
       Bookcase1: -1448646503
       Bookcase2: -259594535
+      DeskWithMirrors: 1013403705
+      Lamp: 268802089
+      Mirror: -1734034760
+      Safe: -22030150
       Tree: 1666567679
       Wardrobe: -619047176
+      board: -1434805296
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

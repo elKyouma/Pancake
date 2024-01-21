@@ -231,7 +231,6 @@ MonoBehaviour:
   distance: 1
   bulletSpeed: 5
   magazineSize: 4
-  weaponOffset: 0.5
   clip: {fileID: 8300000, guid: 71d426b5dfe546645a559d156c506ab7, type: 3}
   ammoText: {fileID: 0}
 --- !u!82 &6479623659221161898
@@ -330,6 +329,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4994902038564948932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6611274724910517728}
+  - component: {fileID: 4462762641720178156}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6611274724910517728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994902038564948932}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.44200003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6614229964068352812}
+  m_Father: {fileID: 4234132984439572357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4462762641720178156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994902038564948932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8ad3d0eede3f04486e4217133cf114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5611161271305709678
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,11 +485,11 @@ Transform:
   m_GameObject: {fileID: 5621277477669963604}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.363, y: 0.409, z: 0}
+  m_LocalPosition: {x: -0.363, y: -0.033000022, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4234132984439572357}
+  m_Father: {fileID: 6611274724910517728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6073092650449160278
 SpriteRenderer:
@@ -535,7 +579,6 @@ GameObject:
   - component: {fileID: 7268623747307826271}
   - component: {fileID: 2211809067136284706}
   - component: {fileID: 120535170117779660}
-  - component: {fileID: 669199194117167572}
   - component: {fileID: 6627510473161213031}
   m_Layer: 0
   m_Name: Player
@@ -559,7 +602,7 @@ Transform:
   m_Children:
   - {fileID: 8064910690095065788}
   - {fileID: 6687767842572265498}
-  - {fileID: 6614229964068352812}
+  - {fileID: 6611274724910517728}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7739187078585031203
@@ -592,6 +635,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7268816037440538979}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6627510473161213031}
+        m_TargetAssemblyTypeName: PlayerAnimationController, Assembly-CSharp
+        m_MethodName: OnPlayerMovement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -640,6 +695,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2243486060076339752}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
         m_MethodName: OnMouseMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4462762641720178156}
+        m_TargetAssemblyTypeName: PlayerFlipSide, Assembly-CSharp
+        m_MethodName: OnFlipSide
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -854,18 +921,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &669199194117167572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395074662717845958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b8ad3d0eede3f04486e4217133cf114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6627510473161213031
 MonoBehaviour:
   m_ObjectHideFlags: 0

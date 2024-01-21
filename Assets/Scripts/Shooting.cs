@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -43,7 +44,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (IsPlayerInRange()) UpdateBulletSpawnPosition();
-        // WeaponRotate();
+        WeaponRotate();
     }
 
     bool IsPlayerInRange()
@@ -101,18 +102,24 @@ public class Shooting : MonoBehaviour
         // }
         // TODO: Weapon angle is not correct when facing right
     }
-    // void WeaponRotate()
-    // {
-    //     Vector2 dir = (Vector2)Player.transform.position - (Vector2)transform.position;
-    //     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+    public void WeaponRotate()
+    {
+        Vector2 dir = GetComponent<AIPath>().velocity2D;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (dir == Vector2.zero)
+        {
+            dir = Player.transform.position - transform.position;
+            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        }
 
-    //     if (angle > 90 || angle < -90)
-    //     {
-    //         WeaponPlaceholder.transform.localScale = new Vector3(1, 1, 1);
-    //     }
-    //     else
-    //     {
-    //         WeaponPlaceholder.transform.localScale = new Vector3(1, -1, 1);
-    //     }
-
+        WeaponPlaceholder.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (angle > 90 || angle < -90)
+        {
+            WeaponPlaceholder.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            WeaponPlaceholder.transform.localScale = new Vector3(1, -1, 1);
+        }
+    }
 }

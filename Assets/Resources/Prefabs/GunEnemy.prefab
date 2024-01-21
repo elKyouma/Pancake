@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5856950918117614332}
   - component: {fileID: 2581032801066840368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 631329615734652543}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 1.206, y: 0, z: 0}
+  m_LocalPosition: {x: 0.54, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1335422971173066660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 2263952819876109482}
   - component: {fileID: 2315444705424537277}
   - component: {fileID: 6712222943119301878}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7869840981806023612}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GraphicPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 8496463894241816476}
   - component: {fileID: 638142316891648560}
   - component: {fileID: 7945702194449086725}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,6 +410,7 @@ MonoBehaviour:
   canSearchCompability: 0
   orientation: 1
   enableRotation: 0
+  velocity2D: {x: 0, y: 0}
   autoRepath:
     mode: 2
     interval: 0.5
@@ -460,7 +461,7 @@ MonoBehaviour:
   Graphic: {fileID: 3833602579141205641}
   BulletSpawn: {fileID: 631329615734652543}
   WeaponPlaceholder: {fileID: 1368591257448498469}
-  fireRate: 1000
+  fireRate: 0.5
   bulletSpeed: 10
   visionRange: 10
   maxAngleAccuracyOffset: 0

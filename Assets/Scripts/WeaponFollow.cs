@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -31,7 +32,9 @@ public class WeaponFollow : MonoBehaviour
     [SerializeField]
     private AudioClip clip;
 
-    private AudioSource audio;
+    private AudioSource audioSource;
+
+    private SpriteRenderer sprite;
 
     [SerializeField]
     private Text ammoText;
@@ -41,8 +44,9 @@ public class WeaponFollow : MonoBehaviour
 
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         graphic = GetComponentsInChildren<Transform>()[1];
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void OnWeaponMovement(InputAction.CallbackContext ctx)
@@ -66,7 +70,7 @@ public class WeaponFollow : MonoBehaviour
 
         SpecialEffects.Instance.ScreenShake(0.3f, 15f);
         StartCoroutine(Vibrate());
-        audio.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip);
         graphic.LeanMoveLocal(Vector3.left * distance * 0.5f, 0.08f).setOnComplete(() => graphic.LeanMoveLocal(Vector3.zero, 0.4f).setEaseOutBounce());
 
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
@@ -127,6 +131,12 @@ public class WeaponFollow : MonoBehaviour
     {
         Vector2 dir = weaponDir;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        if (angle < 0 || angle > 180)
+            sprite.sortingOrder = -1;
+        else
+            sprite.sortingOrder = 1;
+
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         if (angle > 90 || angle < -90)
         {

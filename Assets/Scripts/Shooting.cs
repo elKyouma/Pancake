@@ -90,7 +90,7 @@ public class Shooting : MonoBehaviour
         if (!isPeaceful)
         {
             DestinationSetter.target = Player.transform;
-            StopCoroutine(ChangePOI());
+            yield break;
         }
         var pois = GameObject.FindGameObjectsWithTag("POI");
         var poi = pois[Random.Range(0, pois.Length)];

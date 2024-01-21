@@ -27,8 +27,6 @@ public class WeaponFollow : MonoBehaviour
     private Vector2 weaponDir;
     private Vector2 mousePos;
 
-    [SerializeField]
-    private float weaponOffset = 0.5f;
 
     [SerializeField]
     private AudioClip clip;
@@ -57,9 +55,8 @@ public class WeaponFollow : MonoBehaviour
     {
         if (Camera.main)
         {
-            weaponDir = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>()) - transform.parent.position + Vector3.up * 0.5f;
-            weaponDir.Normalize();
-            RotateWeapon(weaponDir);
+            mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+            useMouse = true;
         }
     }
 
@@ -75,18 +72,14 @@ public class WeaponFollow : MonoBehaviour
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
         go.GetComponent<Rigidbody2D>().velocity = weaponDir * bulletSpeed;
         shootCount++;
+
         if (shootCount % magazineSize == 0)
-        {
             reloadTime = 2.0f;
+        else
+            reloadTime = 0.5f;
 
-            if (shootCount % magazineSize == 0)
-                reloadTime = 2.0f;
-            else
-                reloadTime = 0.5f;
-
-            reloadTimer = reloadTime;
-            UpdateAmmoText();
-        }
+        reloadTimer = reloadTime;
+        UpdateAmmoText();
     }
 
     private void UpdateAmmoText()
@@ -129,10 +122,5 @@ public class WeaponFollow : MonoBehaviour
         }
 
         transform.localPosition = (Vector3)weaponDir * distance + Vector3.up * 0.5f;
-    }
-    private void RotateWeapon(Vector3 dir)
-    {
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward * weaponOffset);
     }
 }

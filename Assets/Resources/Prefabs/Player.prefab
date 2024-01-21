@@ -601,18 +601,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6627510473161213031}
-        m_TargetAssemblyTypeName: PlayerAnimationController, Assembly-CSharp
-        m_MethodName: OnPlayerMovement
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: ee8d44d2-ffb2-4242-b00c-b43d89d1c783
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -651,18 +639,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2243486060076339752}
         m_TargetAssemblyTypeName: WeaponFollow, Assembly-CSharp
-        m_MethodName: OnMouseMovement
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 669199194117167572}
-        m_TargetAssemblyTypeName: PlayerFlipSide, Assembly-CSharp
         m_MethodName: OnMouseMovement
         m_Mode: 0
         m_Arguments:

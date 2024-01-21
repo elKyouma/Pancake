@@ -33,7 +33,7 @@ public class WeaponFollow : MonoBehaviour
     [SerializeField]
     private AudioClip clip;
 
-    private AudioSource audio;
+    private AudioSource audioSource;
 
     [SerializeField]
     private Text ammoText;
@@ -43,7 +43,7 @@ public class WeaponFollow : MonoBehaviour
 
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         graphic = GetComponentsInChildren<Transform>()[1];
     }
 
@@ -57,9 +57,9 @@ public class WeaponFollow : MonoBehaviour
     {
         if (Camera.main)
         {
-            weaponDir = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>()) - transform.parent.position + Vector3.up * 0.5f;
-            weaponDir.Normalize();
-            RotateWeapon(weaponDir);
+            weaponDir = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+            useMouse = true;
+            //RotateWeapon(weaponDir);
         }
     }
 
@@ -69,7 +69,7 @@ public class WeaponFollow : MonoBehaviour
 
         SpecialEffects.Instance.ScreenShake(0.3f, 15f);
         StartCoroutine(Vibrate());
-        audio.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip);
         graphic.LeanMoveLocal(Vector3.left * distance * 0.5f, 0.08f).setOnComplete(() => graphic.LeanMoveLocal(Vector3.zero, 0.4f).setEaseOutBounce());
 
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
@@ -91,11 +91,8 @@ public class WeaponFollow : MonoBehaviour
 
     private void UpdateAmmoText()
     {
-        if (ammoText != null)
-        {
-
+        if (ammoText)
             ammoText.text = $"Ammo: {magazineSize - shootCount}/{magazineSize}";
-        }
     }
 
     private IEnumerator Vibrate()

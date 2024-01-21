@@ -11,7 +11,7 @@ public class HealthSystem : MonoBehaviour
 
     public GameObject healthBar;
     [SerializeField]
-    private Vector2 healthBarOffset = new Vector2(0, 1f);
+    private Vector2 healthBarOffset = new Vector2(0, 1.6f);
     private Vector2 healthBarScale;
     [SerializeField] private Color[] healthBarColors;
 
@@ -40,9 +40,8 @@ public class HealthSystem : MonoBehaviour
     {
         if (healthBar)
         {
-            //healthBar.transform.position = transform.position + (Vector3)healthBarOffset;
-            //healthBar.transform.localScale = new Vector3(healthBarScale.x * health / maxHealth, healthBarScale.y, 1);
-            // hehe, wystarczy pivot zamiast center ~MZ T00:34:26
+            // healthBar.transform.position = transform.position + (Vector3)healthBarOffset;
+            healthBar.transform.localScale = new Vector3(healthBarScale.x * health / maxHealth, healthBarScale.y, 1);
             Color lerpedColor = Color.Lerp(healthBarColors[1], healthBarColors[0], (float)health / maxHealth);
             healthBar.GetComponent<SpriteRenderer>().color = lerpedColor;
         }

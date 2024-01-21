@@ -8,6 +8,8 @@ public class Shooting : MonoBehaviour
     [SerializeField, Tooltip("default is Prefabs\\Bullet")]
     private GameObject Bullet;
     [SerializeField]
+    private GameObject Graphic;
+    [SerializeField]
     private GameObject BulletSpawn;
     [SerializeField]
     private float fireRate = 0.5f;
@@ -77,6 +79,6 @@ public class Shooting : MonoBehaviour
     }
     void UpdateBulletSpawnPosition()
     {
-        BulletSpawn.transform.position = transform.position + (Player.transform.position - transform.position).normalized;
+        BulletSpawn.transform.position = Graphic.transform.position + (Player.transform.position - Graphic.transform.position).normalized;
     }
 }

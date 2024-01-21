@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     private float bulletSlowInterval = 0.1f;
     [SerializeField]
     private GameObject bulletDestroy;
+    public bool isParalyzing;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject, 0.05f);
@@ -23,6 +24,10 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.GetComponent<HealthSystem>())
         {
+            if (isParalyzing)
+            {
+                collision.gameObject.GetComponent<HealthSystem>().Paralyze();
+            }
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(bulletDamage);
         }
     }

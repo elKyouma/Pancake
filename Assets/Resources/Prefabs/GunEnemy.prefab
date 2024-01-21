@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 303338204612833754}
   - component: {fileID: 8496463894241816476}
   - component: {fileID: 638142316891648560}
+  - component: {fileID: 7945702194449086725}
   m_Layer: 0
   m_Name: GunEnemy
   m_TagString: Untagged
@@ -459,7 +460,26 @@ MonoBehaviour:
   Graphic: {fileID: 3833602579141205641}
   BulletSpawn: {fileID: 631329615734652543}
   WeaponPlaceholder: {fileID: 1368591257448498469}
-  fireRate: 0.5
+  fireRate: 1000
   bulletSpeed: 10
   visionRange: 10
   maxAngleAccuracyOffset: 0
+  maxAmmo: 6
+  reloadTime: 1
+--- !u!114 &7945702194449086725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395074662717845958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d472092c4b1624d41b197457a4a01986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  healthBar: {fileID: 0}
+  healthBarOffset: {x: 0, y: 1.6}
+  healthBarColors: []

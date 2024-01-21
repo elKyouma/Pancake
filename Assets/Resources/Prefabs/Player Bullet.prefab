@@ -163,4 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 5
   bulletLifeTime: 2
+  bulletSlowDownPercentage: 0
+  bulletSlowInterval: 0.1
   bulletDestroy: {fileID: 4375434554477170, guid: 5de9fceec047da142908ab5b4a9a2e0e, type: 3}
+  isParalyzing: 1

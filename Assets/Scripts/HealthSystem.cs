@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
@@ -45,5 +46,15 @@ public class HealthSystem : MonoBehaviour
             Color lerpedColor = Color.Lerp(healthBarColors[1], healthBarColors[0], (float)health / maxHealth);
             healthBar.GetComponent<SpriteRenderer>().color = lerpedColor;
         }
+    }
+
+    public void Paralyze()
+    {
+        Debug.Log("Paralyzed");
+        GetComponent<Shooting>().enabled = false;
+        GetComponentInChildren<Animator>().StopPlayback();
+        GetComponentInChildren<Animator>().enabled = false;
+        // TODO: add some particle effect, maybe?
+        GetComponent<AIPath>().enabled = false; // .maxSpeed = 0;        
     }
 }

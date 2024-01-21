@@ -20,6 +20,12 @@ public class UIDetectedCutscene : MonoBehaviour
         StartCoroutine(nameof(CutscenePlayer));
     }
 
+    private void Update()
+    {
+        //Plz dont delete, important
+        LeanTween.update();
+    }
+
     IEnumerator CutscenePlayer()
     {
         Time.timeScale = 0.1f;

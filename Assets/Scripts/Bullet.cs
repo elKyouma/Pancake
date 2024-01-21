@@ -9,6 +9,10 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float bulletLifeTime = 2f;
     [SerializeField]
+    private float bulletSlowDownPercentage = 0.1f;
+    [SerializeField]
+    private float bulletSlowInterval = 0.1f;
+    [SerializeField]
     private GameObject bulletDestroy;
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,6 +28,18 @@ public class Bullet : MonoBehaviour
     }
     void Start()
     {
+        StartCoroutine(SlowDownBullet());
         Destroy(gameObject, bulletLifeTime);
+    }
+
+    IEnumerator SlowDownBullet()
+    {
+        float speed = GetComponent<Rigidbody2D>().velocity.magnitude;
+        while (speed > 0)
+        {
+            speed -= speed * bulletSlowDownPercentage;
+            GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity.normalized * speed;
+            yield return new WaitForSeconds(bulletSlowInterval);
+        }
     }
 }

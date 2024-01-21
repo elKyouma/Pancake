@@ -40,6 +40,10 @@ public class WeaponFollow : MonoBehaviour
     private Text ammoText;
 
     private Transform graphic;
+
+    [SerializeField]
+    private UIDetectedCutscene cutscene;
+
     private bool CanShoot { get { return reloadTimer < 0f; } }
 
     private void Awake()
@@ -91,7 +95,7 @@ public class WeaponFollow : MonoBehaviour
             reloadTime = 2.0f;
         else
             reloadTime = 0.5f;
-
+        cutscene.Activate();
         reloadTimer = reloadTime;
         UpdateAmmoText();
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Pathfinding
 {
+	using System;
 	using Pathfinding.RVO;
 	using Pathfinding.Util;
 
@@ -185,12 +186,24 @@ namespace Pathfinding
 		}
 
 		private GameObject Player;
+		private Rigidbody2D RigidBody;
+		[SerializeField]
+		private GameObject moveAnimatorObject;
+		[SerializeField]
+		private GameObject weaponPlaceholder;
+		[SerializeField]
+		private Transform weaponTransform;
+		private Animator moveAnimator;
+
 		private float bulletRadius;
 		override protected void OnEnable()
 		{
 			base.OnEnable();
 			Player = GameObject.FindGameObjectWithTag("Player");
+			RigidBody = GetComponent<Rigidbody2D>();
+			weaponTransform = weaponPlaceholder.GetComponent<Transform>();
 			bulletRadius = Resources.Load<GameObject>("Prefabs\\Enemy Bullet").transform.localScale.x;
+			moveAnimator = moveAnimatorObject.GetComponentInChildren<Animator>();
 		}
 
 		private bool IsInBulletSight()
@@ -198,26 +211,34 @@ namespace Pathfinding
 			return RaycastHelper.IsInBulletSight(Player.transform.position, transform.position, bulletRadius);
 		}
 
+		private bool shouldMove()
+		{
+
+			if (!reachedEndOfPath) return false;
+			if (!interpolator.valid || remainingDistance + movementPlane.ToPlane(destination - interpolator.endPoint).magnitude > endReachedDistance) return false;
+			if (butMustSeePlayer && !IsInBulletSight()) return false;
+
+			// Don't do height checks in 2D mode
+			if (orientation != OrientationMode.YAxisForward)
+			{
+				// Check if the destination is above the head of the character or far below the feet of it
+				float yDifference;
+				movementPlane.ToPlane(destination - position, out yDifference);
+				var h = tr.localScale.y * height;
+				if (yDifference > h || yDifference < -h * 0.5) return false;
+			}
+
+			return true;
+		}
+
 		/// <summary>\copydoc Pathfinding::IAstarAI::reachedDestination</summary>
 		public bool reachedDestination
 		{
 			get
 			{
-				if (!reachedEndOfPath) return false;
-				if (!interpolator.valid || remainingDistance + movementPlane.ToPlane(destination - interpolator.endPoint).magnitude > endReachedDistance) return false;
-				if (butMustSeePlayer && !IsInBulletSight()) return false;
-
-				// Don't do height checks in 2D mode
-				if (orientation != OrientationMode.YAxisForward)
-				{
-					// Check if the destination is above the head of the character or far below the feet of it
-					float yDifference;
-					movementPlane.ToPlane(destination - position, out yDifference);
-					var h = tr.localScale.y * height;
-					if (yDifference > h || yDifference < -h * 0.5) return false;
-				}
-
-				return true;
+				bool m = shouldMove();
+				moveAnimator.SetBool("isWalking", !m);
+				return m;
 			}
 		}
 
@@ -439,7 +460,12 @@ namespace Pathfinding
 			}
 
 			velocity2D = MovementUtilities.ClampVelocity(velocity2D, maxSpeed, slowdown, slowWhenNotFacingTarget && enableRotation, forwards);
+			if (!RaycastHelper.IsInBulletSight(Player.transform.position, transform.position, bulletRadius))
+			{
+				moveAnimatorObject.transform.localScale = new Vector3(velocity2D.x > 0 ? 1 : -1, 1, 1);
+				weaponTransform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * (float)Math.Atan2(velocity2D.y, velocity2D.x));
 
+			}
 			ApplyGravity(deltaTime);
 
 

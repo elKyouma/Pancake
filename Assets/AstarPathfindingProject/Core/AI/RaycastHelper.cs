@@ -7,7 +7,7 @@ public class RaycastHelper
     {
         int layerMask = 1 << 6; // Obstacles layer
         RaycastHit2D hitWall = Physics2D.Linecast(view, pos, layerMask);
-        Debug.Log($"{pos} {view} {!hitWall}");
+        // Debug.Log($"{pos} {view} {!hitWall}");
         return !hitWall;
     }
 

@@ -57,6 +57,8 @@ namespace Pathfinding {
 			Section("Movement");
 
 			PropertyField("canMove");
+			PropertyField("moveAnimatorObject");
+			PropertyField("weaponPlaceholder");
 			FloatField("maxSpeed", min: 0f);
 
 			if (isAIPath) {

@@ -43,4 +43,3 @@ public class UIDetectedCutscene : MonoBehaviour
         vc.m_Lens.OrthographicSize = newSize;
     }
 }
- 

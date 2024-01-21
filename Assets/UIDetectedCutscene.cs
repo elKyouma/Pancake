@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using UnityEngine.Animations;
+using UnityEditor.Animations;
 
 public class UIDetectedCutscene : MonoBehaviour
 {
@@ -10,6 +12,11 @@ public class UIDetectedCutscene : MonoBehaviour
     private GameObject DetectedText;
     [SerializeField]
     private CinemachineVirtualCamera vc;
+
+    [SerializeField]
+    private AnimatorController newAnimator;
+    [SerializeField]
+    private GameObject player;
 
     private bool activated = false;
     public void Activate()
@@ -35,6 +42,9 @@ public class UIDetectedCutscene : MonoBehaviour
 
         var yPos = DetectedText.GetComponent<RectTransform>().localPosition.y;
         LeanTween.moveY(DetectedText.GetComponent<RectTransform>(), 0, .2f).setEaseOutBack();
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        ChangeClothes();
 
         yield return new WaitForSecondsRealtime(5f);
         LeanTween.moveY(DetectedText.GetComponent<RectTransform>(), yPos, .8f).setEaseInBack();
@@ -47,5 +57,13 @@ public class UIDetectedCutscene : MonoBehaviour
     private void UpdateOrthoSize(float newSize)
     {
         vc.m_Lens.OrthographicSize = newSize;
+    }
+
+
+    private void ChangeClothes()
+    {
+        SpriteRenderer sprite = player.GetComponentInChildren<SpriteRenderer>();
+        Animator animator = player.GetComponentInChildren<Animator>();
+        animator.runtimeAnimatorController = newAnimator;
     }
 }

@@ -436,6 +436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectedText: {fileID: 2049677733}
   vc: {fileID: 821324632}
+  newAnimator: {fileID: 9100000, guid: 7b60f0801ccfd314185d84804f4c7df8, type: 2}
+  player: {fileID: 955522040}
 --- !u!82 &508535988
 AudioSource:
   m_ObjectHideFlags: 0
@@ -540,6 +542,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 950296970119341741, guid: 6a2d961dde54aa44995d3141f945c718, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c7f966485b79d994cb0118983bdefb50, type: 2}
     - target: {fileID: 2243486060076339752, guid: 6a2d961dde54aa44995d3141f945c718, type: 3}
       propertyPath: ammoText
       value: 
@@ -657,6 +663,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &955522040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7395074662717845958, guid: 6a2d961dde54aa44995d3141f945c718, type: 3}
+  m_PrefabInstance: {fileID: 564365555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &969216480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,7 +1429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1494019391645444790, guid: f0c8015c416320248af30103947f4fef, type: 3}
       propertyPath: timerDuration
-      value: 3600
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2402102954822943000, guid: f0c8015c416320248af30103947f4fef, type: 3}
       propertyPath: m_Color.b

@@ -18,7 +18,14 @@ public class UIDetectedCutscene : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    private AudioSource source;
+
     private bool activated = false;
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public void Activate()
     {
         if (activated) return;
@@ -35,9 +42,12 @@ public class UIDetectedCutscene : MonoBehaviour
 
     IEnumerator CutscenePlayer()
     {
+        source.Play();
+        yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 0.1f;
         Time.fixedDeltaTime = 0.02f * Time.deltaTime;
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(5f);
+
         LeanTween.value(vc.gameObject, UpdateOrthoSize, vc.m_Lens.OrthographicSize, 2, 0.05f);
 
         var yPos = DetectedText.GetComponent<RectTransform>().localPosition.y;

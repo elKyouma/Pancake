@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f072c60d412a6f74dbce46988ee62389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration: 6
+  timerDuration: 9
   countDown: 1
   firstMinute: {fileID: 4942213897950756304}
   secondMinute: {fileID: 6691278573619973418}

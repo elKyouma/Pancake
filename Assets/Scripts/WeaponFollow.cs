@@ -21,7 +21,12 @@ public class WeaponFollow : MonoBehaviour
     private int shootCount = 0;
     private float reloadTime = 0.5f;
     private float reloadTimer = 0.0f;
+
+    private bool useMouse = true;
+
     private Vector2 weaponDir;
+    private Vector2 mousePos;
+
 
     [SerializeField]
     private AudioClip clip;
@@ -43,14 +48,15 @@ public class WeaponFollow : MonoBehaviour
     public void OnWeaponMovement(InputAction.CallbackContext ctx)
     {
         weaponDir = ctx.ReadValue<Vector2>();
+        useMouse = false;
     }
 
     public void OnMouseMovement(InputAction.CallbackContext ctx)
     {
         if (Camera.main)
         {
-            weaponDir = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>()) - transform.parent.position + Vector3.up * 0.5f;
-            weaponDir.Normalize();
+            mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+            useMouse = true;
         }
     }
 
@@ -66,15 +72,11 @@ public class WeaponFollow : MonoBehaviour
         GameObject go = Instantiate(bulletPrefab, transform.position, Quaternion.identity, null);
         go.GetComponent<Rigidbody2D>().velocity = weaponDir * bulletSpeed;
         shootCount++;
-        if(shootCount % magazineSize == 0)
-        {
-            reloadTime = 2.0f;
 
-        }
+        if(shootCount % magazineSize == 0)
+            reloadTime = 2.0f;
         else
-        {
             reloadTime = 0.5f;
-        }
 
         reloadTimer = reloadTime;
         UpdateAmmoText();
@@ -112,6 +114,12 @@ public class WeaponFollow : MonoBehaviour
         }
         else
             reloadTimer -= Time.deltaTime;
+
+        if (useMouse)
+        {
+            weaponDir = (Vector3)mousePos - transform.parent.position;
+            weaponDir.Normalize();
+        }
 
         transform.localPosition = (Vector3)weaponDir * distance + Vector3.up * 0.5f;
     }

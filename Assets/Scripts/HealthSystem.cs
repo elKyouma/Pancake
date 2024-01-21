@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class HealthSystem : MonoBehaviour
 {
     public float health;
@@ -16,10 +17,16 @@ public class HealthSystem : MonoBehaviour
     private Vector2 healthBarScale;
     [SerializeField] private Color[] healthBarColors;
 
+    private Animator animator;
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+
         health = maxHealth;
+        
+        if(healthBar)
         healthBarScale = healthBar.transform.localScale;
+        
         UpdateHealthBar();
     }
 
@@ -35,7 +42,7 @@ public class HealthSystem : MonoBehaviour
     }
     public void Die()
     {
-        Destroy(gameObject);
+        animator.SetTrigger("Die");
     }
     void UpdateHealthBar()
     {

@@ -62,7 +62,6 @@ public class UIDetectedCutscene : MonoBehaviour
 
     private void ChangeClothes()
     {
-        SpriteRenderer sprite = player.GetComponentInChildren<SpriteRenderer>();
         Animator animator = player.GetComponentInChildren<Animator>();
         animator.runtimeAnimatorController = newAnimator;
     }

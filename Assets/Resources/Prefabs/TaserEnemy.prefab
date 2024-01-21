@@ -62,10 +62,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7395074662717845958, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
       propertyPath: m_Name
-      value: GunEnemy Variant
+      value: TaserEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945702194449086725, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+      propertyPath: paralyzeColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945702194449086725, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+      propertyPath: paralyzeColor.b
+      value: 0.8254717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945702194449086725, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+      propertyPath: paralyzeColor.g
+      value: 0.6972046
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945702194449086725, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+      propertyPath: paralyzeColor.r
+      value: 0.20636792
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7395074662717845958, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9024651650754437837}
   m_SourcePrefab: {fileID: 100100000, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+--- !u!1 &3942828403921433700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7395074662717845958, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+  m_PrefabInstance: {fileID: 5771126194829739426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9024651650754437837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942828403921433700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d472092c4b1624d41b197457a4a01986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  healthBar: {fileID: 0}
+  healthBarOffset: {x: 0, y: 1.6}
+  healthBarColors: []
+  paralyzeColor: {r: 0, g: 0.9003706, b: 1, a: 0.38431373}

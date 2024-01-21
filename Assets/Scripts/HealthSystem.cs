@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Pathfinding;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 public class HealthSystem : MonoBehaviour
@@ -19,6 +20,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private Color[] healthBarColors;
     [SerializeField] private Color paralyzeColor;
     private Animator animator;
+    [SerializeField] private GameObject GameOver;
 
     void Start()
     {
@@ -44,7 +46,15 @@ public class HealthSystem : MonoBehaviour
     }
     public void Die()
     {
-        animator.SetTrigger("Die");
+        if (gameObject.CompareTag("Player"))
+        {
+            GameOver.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void UpdateHealthBar()
     {

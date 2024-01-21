@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6836053888318220341}
   - component: {fileID: 4601986237527334922}
-  - component: {fileID: 8011880353747108971}
+  - component: {fileID: 1809602981378640336}
   m_Layer: 0
   m_Name: DeskWithMirrors
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8011880353747108971
-BoxCollider2D:
+--- !u!70 &1809602981378640336
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,16 +117,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018734455, y: 0.041666508}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5184328, y: 0.18479736}
-    oldSize: {x: 1.875, y: 2.084351}
-    newSize: {x: 1.875, y: 2.084351}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4353065, y: 0.41400433}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.009953277, y: 0.1298132}
+  m_Size: {x: 1.4938362, y: 0.3667336}
+  m_Direction: 1

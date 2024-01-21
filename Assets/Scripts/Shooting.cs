@@ -14,9 +14,24 @@ public class Shooting : MonoBehaviour
     private GameObject BulletSpawn;
     [SerializeField]
     private GameObject WeaponPlaceholder;
+    private AIDestinationSetter DestinationSetter;
+    private float originalRange;
+    private bool originalRangePlayerSeen;
     [SerializeField]
     private float fireRate = 0.5f;
     private float nextFire = 0.0f;
+
+
+    [SerializeField]
+    private bool isPeaceful = true;
+    public void MakeAngry()
+    {
+        isPeaceful = false;
+        GetComponent<AIPath>().endReachedDistance = originalRange;
+        GetComponent<AIPath>().butMustSeePlayer = originalRangePlayerSeen;
+        DestinationSetter.target = Player.transform;
+
+    }
 
     [SerializeField]
     private float bulletSpeed = 10f;
@@ -34,11 +49,19 @@ public class Shooting : MonoBehaviour
 
     void Start()
     {
+        var aipath = GetComponent<AIPath>();
+        originalRange = aipath.endReachedDistance;
+        aipath.endReachedDistance = 1;
+        originalRangePlayerSeen = aipath.butMustSeePlayer;
+        aipath.butMustSeePlayer = false;
+
         Player = GameObject.FindGameObjectWithTag("Player");
+        DestinationSetter = GetComponent<AIDestinationSetter>();
         if (Bullet == null) Debug.LogError("Shooting: Bullet is null");
         bulletRadius = Bullet.transform.localScale.x;
         currentAmmo = maxAmmo;
         StartCoroutine(Shoot());
+        StartCoroutine(ChangePOI());
     }
 
     void Update()
@@ -61,9 +84,30 @@ public class Shooting : MonoBehaviour
         Gizmos.DrawLine(Player.transform.position, transform.position);
     }
 
+
+    IEnumerator ChangePOI()
+    {
+        if (!isPeaceful)
+        {
+            DestinationSetter.target = Player.transform;
+            StopCoroutine(ChangePOI());
+        }
+        var pois = GameObject.FindGameObjectsWithTag("POI");
+        var poi = pois[Random.Range(0, pois.Length)];
+
+        DestinationSetter.target = poi.transform;
+        yield return new WaitForSeconds(20);
+        StartCoroutine(ChangePOI());
+
+    }
+
     IEnumerator Shoot()
     {
-        if (IsPlayerInRange())
+        if (isPeaceful)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        else if (IsPlayerInRange())
         {
             if (currentAmmo == 0)
             {
@@ -74,7 +118,6 @@ public class Shooting : MonoBehaviour
             GameObject bullet = Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
             currentAmmo--;
             bullet.GetComponent<Rigidbody2D>().velocity = ((Player.transform.position - transform.position).normalized + new Vector3(Random.Range(-maxAngleAccuracyOffset, maxAngleAccuracyOffset), Random.Range(-maxAngleAccuracyOffset, maxAngleAccuracyOffset), 0)) * bulletSpeed;
-            StartCoroutine(Shoot());
         }
         else
         {
@@ -84,34 +127,33 @@ public class Shooting : MonoBehaviour
                 currentAmmo = maxAmmo;
             }
             yield return new WaitForSeconds(0.1f);
-            StartCoroutine(Shoot());
         }
+        StartCoroutine(Shoot());
     }
     void UpdateBulletSpawnPosition()
     {
         var dist = WeaponPlaceholder.transform.position - Player.transform.position;
         float degree = 180 - Vector2.SignedAngle(dist, Vector2.right);
-        WeaponPlaceholder.transform.rotation = Quaternion.Euler(0, 0, degree);
-        // if (degree > 180)
-        // {
-        //     WeaponPlaceholder.transform.localScale = new Vector3(1, -1, 1);
-        // }
-        // else
-        // {
-        //     WeaponPlaceholder.transform.localScale = new Vector3(1, 1, 1);
-        // }
-        // TODO: Weapon angle is not correct when facing right
+        if (!isPeaceful)
+        {
+            WeaponPlaceholder.transform.rotation = Quaternion.Euler(0, 0, degree);
+            // if (degree > 180)
+            // {
+            //     WeaponPlaceholder.transform.localScale = new Vector3(1, -1, 1);
+            // }
+            // else
+            // {
+            //     WeaponPlaceholder.transform.localScale = new Vector3(1, 1, 1);
+            // }
+        }
     }
     public void WeaponRotate()
     {
         Vector2 dir = GetComponent<AIPath>().velocity2D;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (dir == Vector2.zero)
-        {
+        if (!isPeaceful && IsPlayerInRange())
             dir = Player.transform.position - transform.position;
-            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        }
-
+        if (dir == Vector2.zero) return;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         WeaponPlaceholder.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         if (angle > 90 || angle < -90)
         {

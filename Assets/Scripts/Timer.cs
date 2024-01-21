@@ -67,6 +67,10 @@ public class Timer : MonoBehaviour
         {
             FlashTimer();
             cutscene.Activate();
+            foreach(var p in GameObject.FindGameObjectsWithTag("Angry")) {
+                p.GetComponent<Shooting>().MakeAngry();
+            }
+            
         }
     }
 

@@ -64,9 +64,19 @@ public class WeaponFollow : MonoBehaviour
         }
     }
 
+    private bool wasNotAngry = true;
     public void OnFire(InputAction.CallbackContext ctx)
     {
         if (ctx.ReadValue<float>() < 0.5f || !CanShoot) return;
+
+        if (wasNotAngry)
+        {
+            foreach (var p in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                p.GetComponent<Shooting>().MakeAngry();
+            }
+            wasNotAngry = false;
+        }
 
         SpecialEffects.Instance.ScreenShake(0.3f, 15f);
         StartCoroutine(Vibrate());

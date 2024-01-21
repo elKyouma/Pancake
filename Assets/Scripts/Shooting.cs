@@ -43,6 +43,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (IsPlayerInRange()) UpdateBulletSpawnPosition();
+        // WeaponRotate();
     }
 
     bool IsPlayerInRange()
@@ -90,5 +91,28 @@ public class Shooting : MonoBehaviour
         var dist = WeaponPlaceholder.transform.position - Player.transform.position;
         float degree = 180 - Vector2.SignedAngle(dist, Vector2.right);
         WeaponPlaceholder.transform.rotation = Quaternion.Euler(0, 0, degree);
+        // if (degree > 180)
+        // {
+        //     WeaponPlaceholder.transform.localScale = new Vector3(1, -1, 1);
+        // }
+        // else
+        // {
+        //     WeaponPlaceholder.transform.localScale = new Vector3(1, 1, 1);
+        // }
+        // TODO: Weapon angle is not correct when facing right
     }
+    // void WeaponRotate()
+    // {
+    //     Vector2 dir = (Vector2)Player.transform.position - (Vector2)transform.position;
+    //     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+    //     if (angle > 90 || angle < -90)
+    //     {
+    //         WeaponPlaceholder.transform.localScale = new Vector3(1, 1, 1);
+    //     }
+    //     else
+    //     {
+    //         WeaponPlaceholder.transform.localScale = new Vector3(1, -1, 1);
+    //     }
+
 }

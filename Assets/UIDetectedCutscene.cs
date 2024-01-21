@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using UnityEngine.Animations;
-using UnityEditor.Animations;
-
 public class UIDetectedCutscene : MonoBehaviour
 {
     [SerializeField]
@@ -14,7 +12,7 @@ public class UIDetectedCutscene : MonoBehaviour
     private CinemachineVirtualCamera vc;
 
     [SerializeField]
-    private AnimatorController newAnimator;
+    private RuntimeAnimatorController newAnimator;
     [SerializeField]
     private GameObject player;
 

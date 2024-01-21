@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: -365937256558323244}
   m_Layer: 9
   m_Name: ShotgunEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   BulletSpawn: {fileID: 8322527875502857201}
   WeaponPlaceholder: {fileID: 7745109068317819132}
   fireRate: 0.02
+  isPeaceful: 1
   bulletSpeed: 14
   visionRange: 10
   maxAngleAccuracyOffset: 0.01

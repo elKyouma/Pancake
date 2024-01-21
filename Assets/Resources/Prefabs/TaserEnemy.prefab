@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaserEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7395074662717845958, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7945702194449086725, guid: 13e88dd9527d8c14eb892fb05f33a1df, type: 3}
       propertyPath: paralyzeColor.a
       value: 1

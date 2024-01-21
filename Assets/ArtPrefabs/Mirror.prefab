@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1324839117508943240}
   - component: {fileID: 8534311077702569294}
-  - component: {fileID: 6445587044865261631}
+  - component: {fileID: 2076608106423019782}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &6445587044865261631
-BoxCollider2D:
+--- !u!70 &2076608106423019782
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,16 +117,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003606677, y: 0.07605147}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.48899466, y: 0.1170235}
-    oldSize: {x: 1.4375, y: 2.397004}
-    newSize: {x: 1.4375, y: 2.397004}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.92516255, y: 0.3533635}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.024088806, y: 0.022327334}
+  m_Size: {x: 0.8425299, y: 0.374263}
+  m_Direction: 1

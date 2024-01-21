@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4096790859570843369}
   - component: {fileID: 7396949666768238387}
-  - component: {fileID: 1211792775475649838}
+  - component: {fileID: 2502746194998312799}
   m_Layer: 0
   m_Name: board
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &1211792775475649838
-BoxCollider2D:
+--- !u!70 &2502746194998312799
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,16 +117,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.052271128, y: 0.09819698}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.48879942, y: 0.08595035}
-    oldSize: {x: 2.0416665, y: 1.5841068}
-    newSize: {x: 2.0416665, y: 1.5841068}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5338006, y: 0.29763126}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.074735045, y: -0.052140847}
+  m_Size: {x: 1.3721195, y: 0.30013815}
+  m_Direction: 1

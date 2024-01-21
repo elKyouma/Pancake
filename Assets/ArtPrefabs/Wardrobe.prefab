@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3557527073971670831}
   - component: {fileID: 449871742205467702}
-  - component: {fileID: 773523421769858811}
+  - component: {fileID: 8889041470877283005}
   m_Layer: 0
   m_Name: Wardrobe
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &773523421769858811
-BoxCollider2D:
+--- !u!70 &8889041470877283005
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,16 +117,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0049544573, y: 0.20307207}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50293607, y: 0.06234613}
-    oldSize: {x: 1.6875, y: 2.480378}
-    newSize: {x: 1.6875, y: 2.480378}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.6875, y: 0.7154273}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0081507135, y: 0.12888499}
+  m_Size: {x: 1.5892465, y: 0.7767426}
+  m_Direction: 1
